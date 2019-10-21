@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import MenuSidenavItem from '../menu-sidenav-item/menu-sidenav-item.component';
 import styles from './menu-sidenav.style';
 
-import { menuItems } from '../../../config';
+import menuItems from '../../../assets/data/sidenav/menu-items';
 
 class MenuSidenav extends React.Component {
   constructNavItems = (itemsArray, classes) => {
@@ -43,7 +43,10 @@ class MenuSidenav extends React.Component {
 }
 
 MenuSidenav.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({
+    content: PropTypes.shape({}),
+    contentWrapper: PropTypes.shape({})
+  }).isRequired
 };
 
 export default withStyles(styles)(MenuSidenav);

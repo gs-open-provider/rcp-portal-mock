@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom/';
 
 import styles from './content-toolbar-lower.style';
 
-import { menuItems } from '../../../config';
+import menuItems from '../../../assets/data/sidenav/menu-items';
 
 class ContentToolbarLower extends React.Component {
   state = { anchor: null, open: null };

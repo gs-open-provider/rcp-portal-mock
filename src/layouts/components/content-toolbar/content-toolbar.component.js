@@ -24,10 +24,11 @@ import { changeTheme, changeThemeDirection } from '../../../actions/theme.action
 import UtilityService from '../../../services/UtilityService';
 
 // Menu Items
-import { menuItems } from '../../../config';
+import menuItems from '../../../assets/data/sidenav/menu-items';
 
 // Themes
 import scss from './content-toolbar.module.scss';
+import { API } from '../../../config';
 
 function setTitle(items, currentPath, t) {
   for (let i = 0; i < items.length; i += 1) {
@@ -63,7 +64,7 @@ class ContentToolbar extends React.Component {
   }
 
   fetchData = async () => {
-    const response = await UtilityService.getRequest('http://localhost:9090/v1/admin/languages');
+    const response = await UtilityService.getRequest(API.getLanguages);
     if (response) {
       const data = response.data.success && response.data.data ? response.data.data : null;
       if (data !== null) {

@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom/';
 
 import styles from './menu-sidenav-funky.style';
 
-import { menuItems } from '../../../config';
+import menuItems from '../../../assets/data/sidenav/menu-items';
 
 const MenuSidenavFunky = (props) => {
   const { classes, onSelect } = props;
