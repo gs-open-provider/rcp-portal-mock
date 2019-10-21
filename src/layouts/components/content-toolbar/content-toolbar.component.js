@@ -3,6 +3,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
+import i18n from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,26 +15,18 @@ import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import withTheme from '@material-ui/core/styles/withTheme';
 import withWidth, { isWidthDown } from '@material-ui/core/withWidth';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import Switch from '@material-ui/core/Switch';
-import i18n from 'i18next';
-import { withTranslation } from 'react-i18next';
-
-import AppsIcon from '@material-ui/icons/Apps';
 import MenuIcon from '@material-ui/icons/Menu';
-import InvertColorsIcon from '@material-ui/icons/InvertColors';
 import LanguageIcon from '@material-ui/icons/Language';
 
 // Actions
 import { updateLayout, toggleSidenav, toggleNotifications } from '../../../actions/layout.actions';
 import { changeTheme, changeThemeDirection } from '../../../actions/theme.actions';
+import UtilityService from '../../../services/UtilityService';
 
 // Menu Items
 import { menuItems } from '../../../config';
 
 // Themes
-import themes from '../../../themes';
 import scss from './content-toolbar.module.scss';
 import logoImage from '../../../assets/images/op-logo.png';
 
@@ -54,15 +48,12 @@ function setTitle(items, currentPath, t) {
 
 class ContentToolbar extends React.Component {
   state = {
-    layoutMenuEl: null,
-    layoutMenuOpen: false,
-    themeMenuEl: null,
-    themeMenuOpen: false,
     languages: [],
     languageMenuEl: null,
     languageMenuOpen: false
     // language: {
     //   code: localStorage.getItem('op_rcp_user_language_code') || "en",
+    //   label: localStorage.getItem('op_rcp_user_language_label') || "English",
     //   icon: localStorage.getItem('op_rcp_user_language_icon') ||
     // "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png",
     // }
@@ -72,24 +63,10 @@ class ContentToolbar extends React.Component {
     this.fetchData();
   }
 
-  // getLanguageProps = () => {
-  //   const { languages } = this.state;
-  //   for (let i = 0; i < languages.length;) {
-  //     if (languages[i].code === i18n.language) {
-  //       return languages[i];
-  //     }
-  //   }
-  //   console.warn('Prop not found for selected language. Hence, falling back to default language (English)');
-  //   return {
-  //     code: 'en',
-  //     icon: 'https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png'
-  //   };
-  // }
-
   fetchData = async () => {
-    const response = await (await fetch('http://localhost:9090/v1/admin/languages')).json();
+    const response = await UtilityService.getRequest('http://localhost:9090/v1/admin/languages');
     if (response) {
-      const data = response.success && response.data ? response.data : null;
+      const data = response.data.success && response.data.data ? response.data.data : null;
       if (data !== null) {
         const someLangs = [];
         for (let i = 0; i < data.length;) {
@@ -105,34 +82,9 @@ class ContentToolbar extends React.Component {
     }
   }
 
-  handleOpenLayoutClick = (event) => {
-    this.setState({ layoutMenuEl: event.currentTarget, layoutMenuOpen: true });
-  };
-
-  handleSelectLayoutClick = (event, layout) => {
-    this.props.updateLayout(layout);
-    this.setState({ layoutMenuEl: null, layoutMenuOpen: false });
-  }
-
-  handleCloseLayoutClick = () => {
-    this.setState({ layoutMenuEl: null, layoutMenuOpen: false });
-  };
-
-  handleOpenThemeClick = (event) => {
-    this.setState({ themeMenuEl: event.currentTarget, themeMenuOpen: true });
-  };
-
-  handleSelectThemeClick = (event, selectedTheme) => {
-    this.props.changeTheme(selectedTheme.theme);
-    this.setState({ themeMenuEl: null, themeMenuOpen: false });
-  }
-
-  handleCloseThemeClick = () => {
-    this.setState({ themeMenuEl: null, themeMenuOpen: false });
-  };
-
   handleOpenLanguageClick = (event) => {
-    this.setState({ languageMenuEl: event.currentTarget, languageMenuOpen: true });
+    const { languages } = this.state;
+    this.setState({ languageMenuEl: event.currentTarget, languageMenuOpen: languages && languages.length > 0 });
   };
 
   handleSelectLanguageClick = (event, selectedLanguage) => {
@@ -142,31 +94,24 @@ class ContentToolbar extends React.Component {
       // language: selectedLanguage
     });
     i18n.changeLanguage(selectedLanguage.code);
-    localStorage.setItem('op_rcp_user_language_code', selectedLanguage.code);
-    localStorage.setItem('op_rcp_user_language_icon', selectedLanguage.icon);
+    // localStorage.setItem('op_rcp_user_language_code', selectedLanguage.code);
+    // localStorage.setItem('op_rcp_user_language_label', selectedLanguage.label);
+    // localStorage.setItem('op_rcp_user_language_icon', selectedLanguage.icon);
   };
 
   handleCloseLanguageClick = () => {
     this.setState({ languageMenuEl: null, languageMenuOpen: false });
   };
 
-  handleDirectionChange = (event, checked) => {
-    this.props.changeThemeDirection({
-      direction: checked === true ? 'rtl' : 'ltr'
-    });
-    this.setState({ themeMenuEl: null, themeMenuOpen: false });
-  };
-
-
   render() {
     const {
       width,
       layout,
       location,
-      theme,
       tReady,
       t
     } = this.props;
+    const { languages, languageMenuEl, languageMenuOpen } = this.state;
 
     const showBurgerMenu = isWidthDown('sm', width) || !layout.sidenavOpen;
 
@@ -196,68 +141,15 @@ class ContentToolbar extends React.Component {
         </IconButton>
         <Menu
           id="theme-menu"
-          anchorEl={this.state.languageMenuEl}
-          open={this.state.languageMenuOpen}
+          anchorEl={languageMenuEl}
+          open={languageMenuOpen}
           onClose={this.handleCloseLanguageClick}
         >
-          {this.state.languages.map(langOption => (
+          {languages && languages.length > 0 && languages.map(langOption => (
             <MenuItem key={langOption.code} onClick={event => this.handleSelectLanguageClick(event, langOption)}>
               {langOption.code} - {langOption.label} (<img src={langOption.icon} alt={langOption.code} width={16} />)
             </MenuItem>
           ))}
-        </Menu>
-        <IconButton
-          color="inherit"
-          aria-label="change theme"
-          onClick={this.handleOpenThemeClick}
-        >
-          <InvertColorsIcon />
-        </IconButton>
-        <Menu
-          id="theme-menu"
-          anchorEl={this.state.themeMenuEl}
-          open={this.state.themeMenuOpen}
-          onClose={this.handleCloseThemeClick}
-        >
-          {themes.map(themeOption => (
-            <MenuItem key={themeOption.id} onClick={event => this.handleSelectThemeClick(event, themeOption)}>
-              {themeOption.name}
-            </MenuItem>
-          ))}
-        </Menu>
-
-
-        <IconButton
-          color="inherit"
-          aria-label="change layout"
-          onClick={this.handleOpenLayoutClick}
-        >
-          <AppsIcon />
-        </IconButton>
-        <Menu
-          id="layout-menu"
-          anchorEl={this.state.layoutMenuEl}
-          open={this.state.layoutMenuOpen}
-          onClose={this.handleCloseLayoutClick}
-        >
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'classic')}>Classic</MenuItem>
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'toolbar')}>Toolbar</MenuItem>
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'compact')}>Compact</MenuItem>
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'boxed')}>Boxed</MenuItem>
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'funky')}>Funky</MenuItem>
-          <MenuItem onClick={event => this.handleSelectLayoutClick(event, 'tabbed')}>Tabbed</MenuItem>
-          <MenuItem onClick={() => this.handleDirectionChange}>
-            <FormGroup>
-              <FormControlLabel
-                control={<Switch
-                  checked={theme.direction === 'rtl'}
-                  onChange={this.handleDirectionChange}
-                  aria-label="Theme Direction"
-                />}
-                label="RTL Direction"
-              />
-            </FormGroup>
-          </MenuItem>
         </Menu>
         <IconButton
           color="inherit"
@@ -289,13 +181,14 @@ ContentToolbar.propTypes = {
   layout: PropTypes.shape({
     sidenavOpen: PropTypes.bool
   }).isRequired,
-  theme: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({
+    direction: PropTypes.string.isRequired
+  }).isRequired,
   toggleSidenav: PropTypes.func.isRequired,
   toggleNotifications: PropTypes.func.isRequired,
-  updateLayout: PropTypes.func.isRequired,
-  changeTheme: PropTypes.func.isRequired,
-  changeThemeDirection: PropTypes.func.isRequired,
-  location: PropTypes.shape({}).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired,
   tReady: PropTypes.bool,
   t: PropTypes.func
 };
