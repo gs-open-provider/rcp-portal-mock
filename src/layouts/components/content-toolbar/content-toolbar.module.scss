@@ -1,0 +1,16 @@
+.portal-toolbar-logo {
+  max-height: 64px;
+  max-width: 100%;
+  padding: 8px 0px 8px 0px;
+  box-sizing: border-box;
+  object-fit: contain;
+}
+.portal-toolbar-logo-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 260px;
+  max-width: 100%;
+  padding-top: 4px;
+  max-height: 64px;
+  align-self: center;
+}
