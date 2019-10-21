@@ -9,20 +9,16 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import AppBar from '@material-ui/core/AppBar';
 import Drawer from '@material-ui/core/Drawer';
 import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-
-// Portal components
-// import logoImageSM from '../../../assets/images/op-logo-sm.png';
-import logoImage from '../../../assets/images/op-logo.png';
 
 // Actions
 import { toggleSidenav } from '../../../actions/layout.actions';
 
 // Styles
 import scss from './sidenav.module.scss';
+import logoImage from '../../../assets/images/op-logo.png';
 
 const Sidenav = (props) => {
   const {
@@ -43,25 +39,18 @@ const Sidenav = (props) => {
           docked: dockedClass,
           paper: scss[`portal-sidenav-${layout.currentLayout}`]
         }}
+        style={{ borderRightColor: 'white' }}
       >
-        {/* top toolbar with logo */}
         <AppBar
-          color="default"
+          color="inherit"
           position="static"
+          style={{ borderRightColor: 'white' }}
         >
-          <Toolbar style={{ justifyContent: 'center' }}>
+          <Toolbar style={{ justifyContent: 'center', backgroundColor: 'white' }}>
             <img src={logoImage} className={scss['portal-toolbar-brand']} alt="logo" />
-            {/* <img src={logoImageSM} className={scss['portal-toolbar-brand']} alt="logo" />
-            {layout.currentLayout !== 'compact' && layout.currentLayout !== 'funky' &&
-              <Typography variant="title" color="inherit" noWrap>
-                Openprovider
-              </Typography>
-            } */}
           </Toolbar>
         </AppBar>
-        {/* main menu */}
         {props.children}
-        {/* sidenav footer */}
         <AppBar
           color="default"
           position="static"
@@ -91,8 +80,14 @@ function mapStateToProps(state) {
 
 Sidenav.propTypes = {
   toggleSidenav: PropTypes.func.isRequired,
-  layout: PropTypes.shape({}).isRequired,
-  theme: PropTypes.shape({}).isRequired,
+  layout: PropTypes.shape({
+    sidenavOpen: PropTypes.bool,
+    currentLayout: PropTypes.shape({}),
+    sidenavVariant: PropTypes.string
+  }).isRequired,
+  theme: PropTypes.shape({
+    sidenavTheme: PropTypes.shape({})
+  }).isRequired,
   children: PropTypes.shape({}).isRequired
 };
 

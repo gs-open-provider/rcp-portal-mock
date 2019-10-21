@@ -28,7 +28,6 @@ import { menuItems } from '../../../config';
 
 // Themes
 import scss from './content-toolbar.module.scss';
-import logoImage from '../../../assets/images/op-logo.png';
 
 function setTitle(items, currentPath, t) {
   for (let i = 0; i < items.length; i += 1) {
@@ -126,7 +125,6 @@ class ContentToolbar extends React.Component {
           <MenuIcon />
         </IconButton>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <img src={logoImage} className={scss['portal-toolbar-logo']} alt="logo" />
           <Typography variant="title" color="inherit" className={scss['portal-toolbar-logo-text']} noWrap>
             {tReady && (setTitle(menuItems, location.pathname, t) || 'Route Not Found')}
           </Typography>
