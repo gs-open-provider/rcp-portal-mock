@@ -4,7 +4,8 @@ import {
   TOGGLE_SIDENAV,
   SET_SIDENAV_OPEN,
   TOGGLE_SIDENAV_VARIANT,
-  TOGGLE_NOTIFICATIONS } from '../actions/layout.actions';
+  TOGGLE_NOTIFICATIONS
+} from '../actions/layout.actions';
 
 const portalData = JSON.parse(sessionStorage.getItem('portalData'));
 

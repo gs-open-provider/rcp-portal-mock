@@ -48,7 +48,7 @@ class MenuSidenavItem extends React.Component {
       };
 
       return (
-        <ListItem {...listItemAttrs} className={classes.root} disableGutters>
+        <ListItem ref={listItemAttrs} className={classes.root} disableGutters>
           <Button
             onClick={this.handleClick}
             classes={{
@@ -56,7 +56,7 @@ class MenuSidenavItem extends React.Component {
               label: classes.listItemButtonLabel
             }}
           >
-            {<span className={classes.listIcon}>{icon && icon}</span>}
+            <span className={classes.listIcon}>{icon && icon}</span>
             <Typography variant="button" color="inherit" className={classes.listItemText}>
               {
                 tReady && t(title)

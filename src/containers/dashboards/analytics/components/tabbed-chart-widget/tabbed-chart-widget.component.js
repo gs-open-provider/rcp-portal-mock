@@ -72,7 +72,8 @@ class TabbedChartWidget extends React.Component {
     }
   };
 
-  componentWillReceiveProps(props) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(props) {
     const oldDataSet = this.state.lineChartData.datasets[0];
     const newDataSet = { ...oldDataSet };
     newDataSet.borderColor = props.theme.palette.primary.main;

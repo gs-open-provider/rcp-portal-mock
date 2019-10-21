@@ -45,7 +45,9 @@ const ContentFooter = (props) => {
 };
 
 ContentFooter.propTypes = {
-  classes: PropTypes.shape({}).isRequired
+  classes: PropTypes.shape({
+    coloredIcon: PropTypes.string
+  }).isRequired
 };
 
 

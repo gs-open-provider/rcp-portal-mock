@@ -19,7 +19,7 @@ const Analytics = (props) => {
   return (
     <div className={classes.portalDashboardPageWrapper}>
       <Grid item xs={12}>
-        <Grid container justify="center" spacing={16}>
+        <Grid container justify="center" spacing={10}>
 
           <Grid key={1} item xs={12} sm={12} md={8} className={classes.portalWidget}>
             <Typography variant="subtitle1" className={classes.portalWidgetHeading}>

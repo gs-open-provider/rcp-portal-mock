@@ -82,7 +82,8 @@ class DoughnutChartWidget extends React.Component {
     this.setState({ intervalId });
   }
 
-  componentWillReceiveProps(props) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(props) {
     const oldDataSet = this.state.doughnutChartData.datasets[0];
     const newDataSet = { ...oldDataSet };
     newDataSet.hoverBackgroundColor = props.theme.palette.primary.dark;
@@ -122,7 +123,7 @@ class DoughnutChartWidget extends React.Component {
             legend={legendOptions}
           />
         </div>
-        <Grid container justify="center" spacing={16} className={scss['portal-widget__doughnut-labels']}>
+        <Grid container justify="center" spacing={10} className={scss['portal-widget__doughnut-labels']}>
           <Grid key={1} item md={4}>
             <span className={scss['portal-widget__doughnut-labels__icon']}>
               <FontAwesome name="laptop" size="lg" />

@@ -75,7 +75,8 @@ class ActiveUsersWidget extends React.Component {
     this.setState({ intervalId });
   }
 
-  componentWillReceiveProps(props) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(props) {
     const oldDataSet = this.state.userChartData.datasets[0];
     const newDataSet = { ...oldDataSet };
     newDataSet.hoverBackgroundColor = props.theme.palette.primary.light;

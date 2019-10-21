@@ -169,7 +169,7 @@ ContentToolbar.defaultProps = {
 ContentToolbar.propTypes = {
   width: PropTypes.string.isRequired,
   layout: PropTypes.shape({
-    sidenavOpen: PropTypes.bool
+    sidenavOpen: PropTypes.bool.isRequired
   }).isRequired,
   theme: PropTypes.shape({
     direction: PropTypes.string.isRequired

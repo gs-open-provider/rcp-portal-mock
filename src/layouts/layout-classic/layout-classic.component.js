@@ -29,7 +29,8 @@ class ClassicLayout extends React.Component {
   }
 
   // Update the layout state when a going from mobile to desktop and vice versa
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if ((isWidthDown('sm', this.props.width) && isWidthUp('md', nextProps.width))) {
       this.props.toggleSidenavVariant('persistent');
       this.props.setSidenavOpen(true);
@@ -73,7 +74,9 @@ function mapStateToProps(state) {
 }
 
 ClassicLayout.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({
+    wrapper: PropTypes.string
+  }).isRequired,
   children: PropTypes.shape({}).isRequired,
   width: PropTypes.string.isRequired,
   toggleSidenavVariant: PropTypes.func.isRequired,

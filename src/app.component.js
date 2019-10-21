@@ -15,7 +15,8 @@ const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const generateClassName = createGenerateClassName();
 
 class App extends React.Component {
-  componentWillReceiveProps(nextProps) {
+  /* eslint-disable-next-line */
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (document.body) {
       document.body.dir = nextProps.themeConfig.contentTheme.direction;
     }
