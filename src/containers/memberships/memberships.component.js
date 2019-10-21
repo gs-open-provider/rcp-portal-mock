@@ -4,24 +4,24 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import { useTranslation } from 'react-i18next';
 
-import styles from './costprices.style';
+import styles from './memberships.style';
 
-const CostPrices = () => {
+const Memberships = () => {
   const { t, ready } = useTranslation();
 
   return (
     <div>
       <Typography variant="title">
-        {ready && t('OUR_COST_PRICES')}
+        {ready && t('MEMBERSHIP_PLAN')}
       </Typography>
     </div>
   );
 };
 
-CostPrices.defaultProps = {
+Memberships.defaultProps = {
 };
 
-CostPrices.propTypes = {
+Memberships.propTypes = {
 };
 
-export default withStyles(styles, { withTheme: true })(CostPrices);
+export default withStyles(styles, { withTheme: true })(Memberships);

@@ -28,12 +28,7 @@ const AsyncNotFound = asyncComponent(() => import('./containers/not-found/not-fo
 
 
 // MEMBERSHIPS ROUTES
-const AsyncBasic = asyncComponent(() => import('./containers/memberships/basic/basic.component'));
-const AsyncProfessional = asyncComponent(() => import('./containers/memberships/professional/professional.component'));
-const AsyncExpert = asyncComponent(() => import('./containers/memberships/expert/expert.component'));
-const AsyncSupreme = asyncComponent(() => import('./containers/memberships/supreme/supreme.component'));
-const AsyncGTLDs = asyncComponent(() => import('./containers/memberships/gtlds/gtlds.component'));
-const AsyncCostPrices = asyncComponent(() => import('./containers/memberships/costprices/costprices.component'));
+const AsyncMemberships = asyncComponent(() => import('./containers/memberships/memberships.component'));
 
 // NEW-GTLDS ROUTES
 const AsyncNewGTLDsOverview = asyncComponent(() => import('./containers/new-gtlds/overview/overview.component'));
@@ -120,13 +115,7 @@ export default ({ childProps, layout }) => {
 
       {/* After Login Routes */}
       <AppRoute path="/dashboard" exact component={AsyncAnalyticsDashboard} props={childProps} layout={activeLayout} />
-
-      <AppRoute path="/memberships/basic" exact component={AsyncBasic} props={childProps} layout={activeLayout} />
-      <AppRoute path="/memberships/professional" exact component={AsyncProfessional} props={childProps} layout={activeLayout} />
-      <AppRoute path="/memberships/expert" exact component={AsyncExpert} props={childProps} layout={activeLayout} />
-      <AppRoute path="/memberships/supreme" exact component={AsyncSupreme} props={childProps} layout={activeLayout} />
-      <AppRoute path="/memberships/gtlds" exact component={AsyncGTLDs} props={childProps} layout={activeLayout} />
-      <AppRoute path="/memberships/costprices" exact component={AsyncCostPrices} props={childProps} layout={activeLayout} />
+      <AppRoute path="/memberships" exact component={AsyncMemberships} props={childProps} layout={activeLayout} />
 
       <AppRoute path="/newgtlds/overview" exact component={AsyncNewGTLDsOverview} props={childProps} layout={activeLayout} />
       <AppRoute path="/newgtlds/preregistrations/sort" exact component={AsyncNewGTLDsSortPreregistrations} props={childProps} layout={activeLayout} />

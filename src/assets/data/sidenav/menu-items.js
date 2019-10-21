@@ -14,31 +14,32 @@ export default [{
 }, {
   title: 'MEMBERSHIP_PLAN',
   icon: <EuroSymbolIcon style={iconStyle} />,
-  children: [{
-    title: 'BASIC',
-    info: 'UP_TO_2000_DOMAINS',
-    href: '/memberships/basic'
-  }, {
-    title: 'PROFESSIONAL',
-    info: 'UP_TO_15000_DOMAINS',
-    href: '/memberships/professional'
-  }, {
-    title: 'EXPERT',
-    info: 'UP_TO_50000_DOMAINS',
-    href: '/memberships/expert'
-  }, {
-    title: 'SUPREME_PLAN',
-    info: 'ALL_PRODUCTS_AT_COST_PRICE',
-    href: '/memberships/supreme'
-  }, {
-    title: 'NEW_GTLDS_PACKAGES',
-    info: 'ALL_NEW_GTLDS_AT_COST_PRICE',
-    href: '/memberships/gtlds'
-  }, {
-    title: 'OUR_COST_PRICES',
-    info: '',
-    href: '/memberships/costprices'
-  }]
+  href: '/memberships'
+  // children: [{
+  //   title: 'BASIC',
+  //   info: 'UP_TO_2000_DOMAINS',
+  //   href: '/memberships/basic'
+  // }, {
+  //   title: 'PROFESSIONAL',
+  //   info: 'UP_TO_15000_DOMAINS',
+  //   href: '/memberships/professional'
+  // }, {
+  //   title: 'EXPERT',
+  //   info: 'UP_TO_50000_DOMAINS',
+  //   href: '/memberships/expert'
+  // }, {
+  //   title: 'SUPREME_PLAN',
+  //   info: 'ALL_PRODUCTS_AT_COST_PRICE',
+  //   href: '/memberships/supreme'
+  // }, {
+  //   title: 'NEW_GTLDS_PACKAGES',
+  //   info: 'ALL_NEW_GTLDS_AT_COST_PRICE',
+  //   href: '/memberships/gtlds'
+  // }, {
+  //   title: 'OUR_COST_PRICES',
+  //   info: '',
+  //   href: '/memberships/costprices'
+  // }]
 }, {
   title: 'NEW_GTLDS_OVERVIEW',
   icon: <EuroSymbolIcon style={iconStyle} />,
