@@ -82,7 +82,7 @@ Sidenav.propTypes = {
   toggleSidenav: PropTypes.func.isRequired,
   layout: PropTypes.shape({
     sidenavOpen: PropTypes.bool,
-    currentLayout: PropTypes.shape({}),
+    currentLayout: PropTypes.string,
     sidenavVariant: PropTypes.string
   }).isRequired,
   theme: PropTypes.shape({

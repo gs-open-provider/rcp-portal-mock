@@ -43,10 +43,7 @@ class MenuSidenav extends React.Component {
 }
 
 MenuSidenav.propTypes = {
-  classes: PropTypes.shape({
-    content: PropTypes.shape({}),
-    contentWrapper: PropTypes.shape({})
-  }).isRequired
+  classes: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(MenuSidenav);

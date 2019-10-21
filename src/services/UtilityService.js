@@ -26,9 +26,10 @@ class UtilityService {
           Authorization: `bearer ${token}`
         }
       });
+      console.log('GET request called.\nURL:', url, '\nGot Response:', response);
       return response;
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log('Error while sending GET request.\nURL:', url, '\nGot Response:', err);
       return false;
     }
   }

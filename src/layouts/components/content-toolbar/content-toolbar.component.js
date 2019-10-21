@@ -51,12 +51,6 @@ class ContentToolbar extends React.Component {
     languages: [],
     languageMenuEl: null,
     languageMenuOpen: false
-    // language: {
-    //   code: localStorage.getItem('op_rcp_user_language_code') || "en",
-    //   label: localStorage.getItem('op_rcp_user_language_label') || "English",
-    //   icon: localStorage.getItem('op_rcp_user_language_icon') ||
-    // "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png",
-    // }
   };
 
   componentDidMount() {
@@ -91,12 +85,8 @@ class ContentToolbar extends React.Component {
     this.setState({
       languageMenuEl: null,
       languageMenuOpen: false
-      // language: selectedLanguage
     });
     i18n.changeLanguage(selectedLanguage.code);
-    // localStorage.setItem('op_rcp_user_language_code', selectedLanguage.code);
-    // localStorage.setItem('op_rcp_user_language_label', selectedLanguage.label);
-    // localStorage.setItem('op_rcp_user_language_icon', selectedLanguage.icon);
   };
 
   handleCloseLanguageClick = () => {
