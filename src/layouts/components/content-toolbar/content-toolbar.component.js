@@ -8,7 +8,8 @@ import { withTranslation } from 'react-i18next';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import { Typography } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -162,7 +163,7 @@ function mapStateToProps(state) {
 
 ContentToolbar.defaultProps = {
   tReady: false,
-  t: () => {}
+  t: () => { }
 };
 
 ContentToolbar.propTypes = {
@@ -182,10 +183,19 @@ ContentToolbar.propTypes = {
   t: PropTypes.func
 };
 
+const ContToolbar = withTheme(ContentToolbar);
+
+function WithTheme() {
+  return (
+    <ThemeProvider>
+      <ContToolbar />
+    </ThemeProvider>
+  );
+}
+
 export default compose(
   withRouter,
   withWidth(),
-  withTheme(),
   withTranslation(),
   connect(mapStateToProps, {
     toggleSidenav,
@@ -194,4 +204,4 @@ export default compose(
     changeTheme,
     changeThemeDirection
   })
-)(ContentToolbar);
+)(WithTheme);

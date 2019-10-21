@@ -6,7 +6,7 @@ import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { MuiThemeProvider } from '@material-ui/core';
 
 import Sidenav from '../components/sidenav/sidenav.component';
 import NotificationSidenav from '../components/notification-sidenav/notification-sidenav.component';
@@ -48,6 +48,7 @@ class FunkyLayout extends React.Component {
 
   render() {
     const { children, classes, theme } = this.props;
+    console.log('HI', this.props);
     const sidenavTheme = createMuiTheme(theme.sidenavTheme);
 
     return (
