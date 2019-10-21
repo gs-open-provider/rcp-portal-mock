@@ -47,7 +47,7 @@ const Login = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h4" component="h2" gutterBottom>
                   Portal Admin Panel
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -58,7 +58,7 @@ const Login = (props) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="secondary" variant="raised">Create an account</Button>
+                <Button fullWidth href="/register" color="secondary" variant="contained">Create an account</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -81,7 +81,7 @@ const Login = (props) => {
                 />
               </CardContent>
               <CardActions className={scss['login-actions']}>
-                <Button href="/login" color="primary" variant="raised">Login</Button>
+                <Button href="/login" color="primary" variant="contained">Login</Button>
                 <Button href="/forgot-password">Forgot Password</Button>
               </CardActions>
             </Card>

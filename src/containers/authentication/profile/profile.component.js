@@ -75,7 +75,7 @@ class Profile extends React.Component {
         )}
       >
         <Grid item sm={10} xs={12} className={scss.panel}>
-          <Grid direction='column' container spacing={16}>
+          <Grid direction='column' container spacing={10}>
             <Grid
               item
               xs={12}
@@ -94,10 +94,10 @@ class Profile extends React.Component {
                   <div className={scss['portal-profile__header']}>
                     <img alt="avatar" src="assets/images/avatars/avatar-male.png" className={scss['portal-profile__header-avatar']} />
                     <div>
-                      <Typography variant="headline" gutterBottom>
+                      <Typography variant="h4" gutterBottom>
                         Profile / Christos
                       </Typography>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography variant="subtitle1" gutterBottom>
                         Edit your perfonal information, change your password and set your privacy settings here.
                       </Typography>
                     </div>
@@ -117,7 +117,7 @@ class Profile extends React.Component {
                     </Grid>
                   </CardContent>
                   <CardActions className={scss['card-actions']}>
-                    <Button disabled={!isEnabled} variant="raised" color="secondary" onClick={() => this.onSnackbarOpen()}>
+                    <Button disabled={!isEnabled} variant="contained" color="secondary" onClick={() => this.onSnackbarOpen()}>
                       Update Settings
                     </Button>
                   </CardActions>

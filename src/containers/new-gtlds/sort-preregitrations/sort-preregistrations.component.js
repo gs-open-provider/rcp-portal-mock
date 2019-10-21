@@ -11,7 +11,7 @@ const SortPreregistrations = () => {
 
   return (
     <div>
-      <Typography variant="title">
+      <Typography variant="h6">
         {ready && t('SORT_YOUR_PREREGISTRATIONS')}
       </Typography>
     </div>

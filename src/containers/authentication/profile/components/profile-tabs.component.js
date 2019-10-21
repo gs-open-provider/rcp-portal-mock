@@ -115,9 +115,9 @@ class ProfileTabs extends React.Component {
             textColor="secondary"
             fullWidth
           >
-            <Tab className={classes.tabLabel} label="Profile" icon={<AccountCircle />}/>
-            <Tab className={classes.tabLabel} label="Change Password" icon={<Security />}/>
-            <Tab className={classes.tabLabel} label="Notifications" icon={<Notifications />}/>
+            <Tab className={classes.tabLabel} label="Profile" icon={<AccountCircle />} />
+            <Tab className={classes.tabLabel} label="Change Password" icon={<Security />} />
+            <Tab className={classes.tabLabel} label="Notifications" icon={<Notifications />} />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -140,8 +140,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { errors.name &&
-                  <FormHelperText error>This is a required field</FormHelperText>
+                  {errors.name &&
+                    <FormHelperText error>This is a required field</FormHelperText>
                   }
                 </Grid>
                 <Grid item sm={6} xs={12}>
@@ -156,8 +156,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { errors.lastname &&
-                  <FormHelperText error>We also need your last name</FormHelperText>
+                  {errors.lastname &&
+                    <FormHelperText error>We also need your last name</FormHelperText>
                   }
                 </Grid>
                 <Grid item xs={12}>
@@ -172,8 +172,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { errors.email &&
-                  <FormHelperText error>Please enter your email</FormHelperText>
+                  {errors.email &&
+                    <FormHelperText error>Please enter your email</FormHelperText>
                   }
                 </Grid>
                 <Grid item xs={12}>
@@ -228,8 +228,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { pwdErrors.password &&
-                  <FormHelperText error>This is a required field</FormHelperText>
+                  {pwdErrors.password &&
+                    <FormHelperText error>This is a required field</FormHelperText>
                   }
                 </Grid>
                 <Grid item xs={12}>
@@ -245,8 +245,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { pwdErrors.newPassword &&
-                  <FormHelperText error>This is a required field</FormHelperText>
+                  {pwdErrors.newPassword &&
+                    <FormHelperText error>This is a required field</FormHelperText>
                   }
                 </Grid>
                 <Grid item xs={12}>
@@ -262,8 +262,8 @@ class ProfileTabs extends React.Component {
                     required
                     margin="normal"
                   />
-                  { pwdErrors.confirmPassword &&
-                  <FormHelperText error>This is a required field</FormHelperText>
+                  {pwdErrors.confirmPassword &&
+                    <FormHelperText error>This is a required field</FormHelperText>
                   }
                 </Grid>
               </Grid>
@@ -276,42 +276,42 @@ class ProfileTabs extends React.Component {
             >
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <LocationOn color="secondary"/>
+                  <LocationOn color="secondary" />
                   <Switch />
                   <Typography component="p">Show my location</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <PersonPin color="secondary"/>
-                  <Switch checked="true" />
+                  <PersonPin color="secondary" />
+                  <Switch checked />
                   <Typography component="p">Show my avatar</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <Group color="secondary"/>
-                  <Switch checked="true" />
+                  <Group color="secondary" />
+                  <Switch checked />
                   <Typography component="p">Show my connections</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <Share color="secondary"/>
-                  <Switch checked="true" />
+                  <Share color="secondary" />
+                  <Switch checked />
                   <Typography component="p">Show social links</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <NotificationsActive color="secondary"/>
+                  <NotificationsActive color="secondary" />
                   <Switch />
                   <Typography component="p">Send Notifications</Typography>
                 </div>
               </Grid>
               <Grid item sm={6} xs={12}>
                 <div className={classes.toggleContainer}>
-                  <Backup color="secondary"/>
+                  <Backup color="secondary" />
                   <Switch />
                   <Typography component="p">Allow cloud backups</Typography>
                 </div>

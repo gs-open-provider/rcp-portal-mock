@@ -40,7 +40,7 @@ const Lock = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h4" component="h2" gutterBottom>
                   Welcome back John
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -57,7 +57,7 @@ const Lock = (props) => {
                 />
               </CardContent>
               <CardActions className={scss['lock-actions']}>
-                <Button href="/lock" color="primary" variant="raised">Login</Button>
+                <Button href="/lock" color="primary" variant="contained">Login</Button>
                 <Button href="/">Logout</Button>
               </CardActions>
             </Card>

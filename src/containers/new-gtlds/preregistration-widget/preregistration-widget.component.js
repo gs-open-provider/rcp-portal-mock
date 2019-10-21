@@ -11,7 +11,7 @@ const PreregistrationWidget = () => {
 
   return (
     <div>
-      <Typography variant="title">
+      <Typography variant="h6">
         {ready && t('PREREGISTRATION_WIDGET')}
       </Typography>
     </div>

@@ -47,7 +47,7 @@ const Register = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h4" component="h2" gutterBottom>
                   Register
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -55,7 +55,7 @@ const Register = (props) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/login" color="secondary" variant="raised">I'm already registered</Button>
+                <Button fullWidth href="/login" color="secondary" variant="contained">I'm already registered</Button>
               </CardActions>
             </Card>
           </Grid>
@@ -102,7 +102,7 @@ const Register = (props) => {
                 </Grid>
               </CardContent>
               <CardActions>
-                <Button fullWidth href="/register" color="primary" variant="raised">Register</Button>
+                <Button fullWidth href="/register" color="primary" variant="contained">Register</Button>
               </CardActions>
             </Card>
           </Grid>

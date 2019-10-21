@@ -11,7 +11,7 @@ const Memberships = () => {
 
   return (
     <div>
-      <Typography variant="title">
+      <Typography variant="h6">
         {ready && t('MEMBERSHIP_PLAN')}
       </Typography>
     </div>

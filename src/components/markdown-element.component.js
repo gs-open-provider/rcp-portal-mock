@@ -53,11 +53,11 @@ const styles = theme => ({
     fontSize: 16,
     color: theme.palette.text.primary,
     '& .anchor-link': {
-      marginTop: -theme.spacing.unit * 12, // Offset for the anchor.
+      marginTop: -theme.spacing(12), // Offset for the anchor.
       position: 'absolute'
     },
     '& pre, & pre[class*="language-"]': {
-      margin: `${theme.spacing.unit * 3}px 0`,
+      margin: `${theme.spacing(3)}px 0`,
       padding: '12px 18px',
       backgroundColor: theme.palette.background.paper,
       borderRadius: 3,
@@ -164,16 +164,16 @@ const styles = theme => ({
     },
     '& td': {
       borderBottom: `1px solid ${theme.palette.divider}`,
-      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px ${theme.spacing.unit}px ${
+      padding: `${theme.spacing.unit}px ${theme.spacing(2)}px ${theme.spacing.unit}px ${
         theme.spacing.unit
       }px`,
       textAlign: 'left',
     },
     '& td:last-child': {
-      paddingRight: theme.spacing.unit * 3
+      paddingRight: theme.spacing(3)
     },
     '& td compact': {
-      paddingRight: theme.spacing.unit * 3
+      paddingRight: theme.spacing(3)
     },
     '& td code': {
       fontSize: 13,
@@ -183,11 +183,11 @@ const styles = theme => ({
       whiteSpace: 'pre',
       borderBottom: `1px solid ${theme.palette.divider}`,
       fontWeight: theme.typography.fontWeightMedium,
-      padding: `0 ${theme.spacing.unit * 2}px 0 ${theme.spacing.unit}px`,
+      padding: `0 ${theme.spacing(2)}px 0 ${theme.spacing.unit}px`,
       textAlign: 'left'
     },
     '& th:last-child': {
-      paddingRight: theme.spacing.unit * 3
+      paddingRight: theme.spacing(3)
     },
     '& tr': {
       height: 48
@@ -201,8 +201,8 @@ const styles = theme => ({
     '& blockquote': {
       borderLeft: `5px solid ${theme.palette.text.hint}`,
       backgroundColor: theme.palette.background.paper,
-      padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 3}px`,
-      margin: `${theme.spacing.unit * 3}px 0`
+      padding: `${theme.spacing.unit / 2}px ${theme.spacing(3)}px`,
+      margin: `${theme.spacing(3)}px 0`
     },
     '& a, & a code': {
       // Style taken from the Link component

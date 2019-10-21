@@ -111,7 +111,7 @@ class ActiveUsersWidget extends React.Component {
             Active users right now
           </Typography>
           <Typography
-            variant="display3"
+            variant="h4"
             className={classNames(
               classes['portal-text-contrast'],
               classes['portal-active-users-widget__countup']

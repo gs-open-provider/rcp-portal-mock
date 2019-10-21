@@ -40,7 +40,7 @@ const Forgot = (props) => {
             <Card className={classNames(scss.card, classes['primary-card'])}>
               <CardContent className={scss['signup-content']}>
                 <img src={logoImage} className={scss['signup-logo']} alt="logo" />
-                <Typography variant="headline" component="h2" gutterBottom>
+                <Typography variant="h4" component="h2" gutterBottom>
                   Password Revovery
                 </Typography>
                 <Typography component="p" gutterBottom>
@@ -56,7 +56,7 @@ const Forgot = (props) => {
                 />
               </CardContent>
               <CardActions className={scss['lock-actions']}>
-                <Button href="/forgot-password" color="primary" variant="raised">Reset Password</Button>
+                <Button href="/forgot-password" color="primary" variant="contained">Reset Password</Button>
                 <Button href="/login">Back to login</Button>
               </CardActions>
             </Card>

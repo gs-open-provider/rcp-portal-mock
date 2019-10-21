@@ -117,7 +117,7 @@ class ContentToolbar extends React.Component {
           <MenuIcon />
         </IconButton>
         <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <Typography variant="title" color="inherit" className={scss['portal-toolbar-logo-text']} noWrap>
+          <Typography variant="h6" color="inherit" className={scss['portal-toolbar-logo-text']} noWrap>
             {tReady && (setTitle(menuItems, location.pathname, t) || 'Route Not Found')}
           </Typography>
         </div>

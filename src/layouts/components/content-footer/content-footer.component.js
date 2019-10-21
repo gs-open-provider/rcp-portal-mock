@@ -23,7 +23,7 @@ const ContentFooter = (props) => {
     >
       <Toolbar>
         <Typography
-          variant="title"
+          variant="h6"
           color="inherit"
           noWrap
         >

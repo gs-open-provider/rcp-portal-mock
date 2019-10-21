@@ -130,7 +130,7 @@ const ApplicationRoutes = ({ childProps, layout }) => {
 };
 
 AppRoute.propTypes = {
-  layout: PropTypes.func.isRequired,
+  layout: PropTypes.shape({}).isRequired,
   component: PropTypes.func.isRequired
 };
 

@@ -8,7 +8,7 @@ const styles = theme => ({
   },
   drawerHeader: theme.mixins.toolbar,
   nested: {
-    paddingLeft: theme.spacing.unit * 4,
+    paddingLeft: theme.spacing(4),
     textAlign: 'left'
   },
   contentWrapper: {

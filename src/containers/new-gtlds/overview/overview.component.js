@@ -11,7 +11,7 @@ const NewGTLDsOverview = () => {
 
   return (
     <div>
-      <Typography variant="title">
+      <Typography variant="h6">
         {ready && t('NEW_GTLDS_OVERVIEW')}
       </Typography>
     </div>

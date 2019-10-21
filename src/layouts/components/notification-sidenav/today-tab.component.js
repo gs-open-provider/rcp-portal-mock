@@ -52,7 +52,7 @@ class TodayTab extends Component {
     return (
       <div className={scss['portal-today-wrapper']}>
         <Typography
-          variant="headline"
+          variant="h4"
           className={scss['portal-today-date']}
         >
           {moment(this.state.timeNow).format('dddd, MMMM Do, YYYY')}
@@ -75,7 +75,7 @@ class TodayTab extends Component {
                   secondary={forecast.text}
                 />
                 <ListItemSecondaryAction className={scss['portal-weather-temp']}>
-                  <Typography variant="display1" component="span">{forecast.temp}&deg;</Typography>
+                  <Typography variant="inherit" component="span">{forecast.temp}&deg;</Typography>
                 </ListItemSecondaryAction>
               </ListItem>
             ))}
