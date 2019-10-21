@@ -75,7 +75,7 @@ const TabbedLayout = props => (
 );
 
 // TODO: Consider looping through an object containing all routes
-export default ({ childProps, layout }) => {
+const ApplicationRoutes = ({ childProps, layout }) => {
   let activeLayout;
   switch (layout.currentLayout) {
   case 'classic':
@@ -157,3 +157,12 @@ FunkyLayout.propTypes = {
 TabbedLayout.propTypes = {
   children: PropTypes.shape({}).isRequired
 };
+
+ApplicationRoutes.propTypes = {
+  childProps: PropTypes.shape({}).isRequired,
+  layout: PropTypes.shape({
+    currentLayout: PropTypes.string
+  }).isRequired
+};
+
+export default ApplicationRoutes;
