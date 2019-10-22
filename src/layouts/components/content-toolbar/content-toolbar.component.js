@@ -183,7 +183,14 @@ ContentToolbar.propTypes = {
   t: PropTypes.func
 };
 
-const ContToolbar = withTheme(ContentToolbar);
+const ContToolbar = withTheme(
+  connect(mapStateToProps, {
+    toggleSidenav,
+    toggleNotifications,
+    updateLayout,
+    changeTheme,
+    changeThemeDirection
+  })(withRouter(withWidth()(ContentToolbar))));
 
 function WithTheme() {
   return (
@@ -197,11 +204,4 @@ export default compose(
   withRouter,
   withWidth(),
   withTranslation(),
-  connect(mapStateToProps, {
-    toggleSidenav,
-    toggleNotifications,
-    updateLayout,
-    changeTheme,
-    changeThemeDirection
-  })
 )(WithTheme);
