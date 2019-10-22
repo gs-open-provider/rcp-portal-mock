@@ -69,7 +69,10 @@ const Lock = (props) => {
 };
 
 Lock.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({
+    background: PropTypes.string,
+    'primary-card': PropTypes.string
+  }).isRequired
 };
 
 export default withStyles(themeStyles, { withTheme: true })(Lock);

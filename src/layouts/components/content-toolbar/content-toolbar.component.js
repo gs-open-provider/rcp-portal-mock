@@ -9,7 +9,6 @@ import { withTranslation } from 'react-i18next';
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
 import { Typography } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -183,25 +182,23 @@ ContentToolbar.propTypes = {
   t: PropTypes.func
 };
 
-const ContToolbar = withTheme(
-  connect(mapStateToProps, {
-    toggleSidenav,
-    toggleNotifications,
-    updateLayout,
-    changeTheme,
-    changeThemeDirection
-  })(withRouter(withWidth()(ContentToolbar))));
+const ContToolbar = withTheme(connect(mapStateToProps, {
+  toggleSidenav,
+  toggleNotifications,
+  updateLayout,
+  changeTheme,
+  changeThemeDirection
+})(withRouter(withTranslation()(withWidth()(ContentToolbar)))));
 
 function WithTheme() {
   return (
-    <ThemeProvider>
-      <ContToolbar />
-    </ThemeProvider>
+    // <ThemeProvider>
+    <ContToolbar />
+    // </ThemeProvider>
   );
 }
 
 export default compose(
   withRouter,
   withWidth(),
-  withTranslation(),
 )(WithTheme);

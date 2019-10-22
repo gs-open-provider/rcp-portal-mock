@@ -48,7 +48,7 @@ class MenuSidenavItem extends React.Component {
       };
 
       return (
-        <ListItem ref={listItemAttrs} className={classes.root} disableGutters>
+        <ListItem {...listItemAttrs} className={classes.root} disableGutters>
           <Button
             onClick={this.handleClick}
             classes={{
@@ -95,7 +95,15 @@ MenuSidenavItem.defaultProps = {
 };
 
 MenuSidenavItem.propTypes = {
-  classes: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    listItem: PropTypes.string,
+    listItemText: PropTypes.string,
+    listItemActive: PropTypes.string,
+    listIcon: PropTypes.string,
+    listItemButtonLabel: PropTypes.string,
+    nested: PropTypes.string
+  }).isRequired,
   children: PropTypes.shape({}),
   href: PropTypes.string,
   title: PropTypes.string.isRequired,
