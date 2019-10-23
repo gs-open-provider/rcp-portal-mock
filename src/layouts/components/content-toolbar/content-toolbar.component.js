@@ -8,7 +8,7 @@ import { withTranslation } from 'react-i18next';
 
 // Material components
 import Toolbar from '@material-ui/core/Toolbar';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -24,11 +24,17 @@ import { changeTheme, changeThemeDirection } from '../../../actions/theme.action
 import UtilityService from '../../../services/UtilityService';
 
 // Menu Items
-import menuItems from '../../../assets/data/sidenav/menu-items';
+import { menuItems } from '../../../assets/data/sidenav/menu-items';
 
 // Themes
 import scss from './content-toolbar.module.scss';
 import { API } from '../../../config';
+
+// Custom Components
+import UserInfo from '../userinfo/userinfo.component';
+
+// Mock Data
+import userInfo from '../../../assets/data/sidenav/user-info';
 
 function setTitle(items, currentPath, t) {
   for (let i = 0; i < items.length; i += 1) {
@@ -50,7 +56,9 @@ class ContentToolbar extends React.Component {
   state = {
     languages: [],
     languageMenuEl: null,
-    languageMenuOpen: false
+    userMenuEl: null,
+    languageMenuOpen: false,
+    userMenuOpen: false
   };
 
   componentDidMount() {
@@ -93,6 +101,14 @@ class ContentToolbar extends React.Component {
     this.setState({ languageMenuEl: null, languageMenuOpen: false });
   };
 
+  handleOpenUserClick = (event) => {
+    this.setState({ userMenuEl: event.currentTarget, userMenuOpen: true });
+  };
+
+  handleCloseUserClick = () => {
+    this.setState({ userMenuEl: null, userMenuOpen: false });
+  };
+
   render() {
     const {
       width,
@@ -101,7 +117,13 @@ class ContentToolbar extends React.Component {
       tReady,
       t
     } = this.props;
-    const { languages, languageMenuEl, languageMenuOpen } = this.state;
+    const {
+      languages,
+      languageMenuEl,
+      languageMenuOpen,
+      userMenuEl,
+      userMenuOpen
+    } = this.state;
 
     const showBurgerMenu = isWidthDown('sm', width) || !layout.sidenavOpen;
 
@@ -131,6 +153,9 @@ class ContentToolbar extends React.Component {
         <Menu
           id="theme-menu"
           anchorEl={languageMenuEl}
+          getContentAnchorEl={null}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'center' }}
           open={languageMenuOpen}
           onClose={this.handleCloseLanguageClick}
         >
@@ -147,6 +172,27 @@ class ContentToolbar extends React.Component {
         >
           <NotificationsIcon />
         </IconButton>
+        <UserInfo
+          isMobileView={isWidthDown('sm', width)}
+          userDetails={userInfo[0]}
+          handleMenuOpen={this.handleOpenUserClick}
+        />
+        <Menu
+          id="theme-menu"
+          anchorEl={userMenuEl}
+          open={userMenuOpen}
+          onClose={this.handleCloseUserClick}
+          getContentAnchorEl={null}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <MenuItem style={{ minWidth: 260 }}>
+            Profile
+          </MenuItem>
+          <MenuItem>
+            Signout
+          </MenuItem>
+        </Menu>
       </Toolbar>
     );
   }

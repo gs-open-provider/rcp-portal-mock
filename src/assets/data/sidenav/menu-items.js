@@ -7,7 +7,9 @@ const iconStyle = {
   fontSize: 16
 };
 
-export default [{
+export const companyLogo = 'https://ml53mkyvknmd.i.optimole.com/w:561/h:300/q:auto/https://www.openprovider.com/wp-content/uploads/2018/10/op-logo.png';
+
+export const menuItems = [{
   title: 'DASHBOARD',
   href: '/dashboard',
   icon: <DashboardIcon style={iconStyle} />
@@ -126,3 +128,5 @@ export default [{
   icon: <EuroSymbolIcon style={iconStyle} />
 }
 ];
+
+export default menuItems;

@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import MenuSidenavItem from '../menu-sidenav-item/menu-sidenav-item.component';
 import styles from './menu-sidenav.style';
 
-import menuItems from '../../../assets/data/sidenav/menu-items';
+import { menuItems } from '../../../assets/data/sidenav/menu-items';
 
 class MenuSidenav extends React.Component {
   constructNavItems = (itemsArray, classes) => {
