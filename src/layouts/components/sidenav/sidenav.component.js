@@ -18,7 +18,7 @@ import { toggleSidenav } from '../../../actions/layout.actions';
 
 // Styles
 import scss from './sidenav.module.scss';
-import logoImage from '../../../assets/images/op-logo.png';
+import { companyLogo } from '../../../assets/data/sidenav/menu-items';
 
 const Sidenav = (props) => {
   const {
@@ -47,7 +47,7 @@ const Sidenav = (props) => {
           style={{ borderRightColor: 'white' }}
         >
           <Toolbar style={{ justifyContent: 'center', backgroundColor: 'white' }}>
-            <img src={logoImage} className={scss['portal-toolbar-brand']} alt="logo" />
+            <img src={companyLogo} className={scss['portal-toolbar-brand']} alt="logo" />
           </Toolbar>
         </AppBar>
         {props.children}
