@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import compose from 'recompose/compose';
+import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import { withTranslation } from 'react-i18next';
 
 // Material components
 import AppBar from '@material-ui/core/AppBar';
@@ -9,84 +12,128 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 
-import { useTranslation } from 'react-i18next';
 import themeStyles from './content-footer.theme.style';
 
-const ContentFooter = (props) => {
-  const { classes, ...other } = props;
-  const { t, ready } = useTranslation();
 
-  return (
-    <AppBar
-      color="default"
-      position="static"
-      {...other}
-    >
-      <Toolbar>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={6}>
-            <Typography
-              variant="h6"
-              color="inherit"
-              noWrap
-            >
+class ContentFooter extends React.Component {
+  renderRightsText = () => {
+    const { classes, t, tReady } = this.props;
+    return (
+      <div>
+        {
+          tReady &&
+          <small>
+            {
+              t('ALL_RIGHTS_RESERVED')
+            }
+            &nbsp;&copy; 2014 - 2019. <a className={classes.ownerLink} href="https://www.openprovider.com/" target="blank">Openprovider</a>
+          </small>
+        }
+      </div>
+    );
+  };
+
+  renderLinkItem = (name, link) => {
+    const { classes, t, tReady } = this.props;
+    return (
+      <Link className={classes.linkItem} href="null" to={link} >
+        {tReady && t(name)}
+      </Link>
+    );
+  };
+
+  render() {
+    const {
+      classes,
+      t,
+      tReady,
+      ...other
+    } = this.props;
+
+    return (
+      <AppBar
+        color="default"
+        position="static"
+        {...other}
+      >
+        <Toolbar>
+          <Grid container spacing={2}>
+            <Grid item xs={12} md={6}>
+              <Hidden smDown>
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                >
+                  {this.renderRightsText(classes)}
+                </Typography>
+              </Hidden>
+              <Hidden mdUp>
+                <Typography
+                  className={classes.rightsTextContainer}
+                  variant="h6"
+                  color="inherit"
+                  noWrap
+                >
+                  {this.renderRightsText(classes)}
+                </Typography>
+              </Hidden>
+            </Grid>
+            <Grid item xs={12} md={6} >
               {
-                ready &&
-                <small>
-                  {
-                    t('ALL_RIGHTS_RESERVED')
-                  }
-                  &nbsp;&copy; 2014 - 2019.&nbsp;
-                  <a
-                    className={classes.ownerLink}
-                    href="https://www.openprovider.com/"
-                    target="blank"
-                  >
-                    Openprovider
-                  </a>
-                </small>
+                tReady &&
+                <div>
+                  <Hidden smDown>
+                    <Typography variant="subtitle1" className={classes.linkContainerLarge}>
+                      <span>
+                        {this.renderLinkItem('CONTACT_US', '/contact')}  |&nbsp;
+                        {this.renderLinkItem(('DASHBOARD'), '/dashboard')}  |&nbsp;
+                        {this.renderLinkItem(t('KNOWLEDGE_BASE'), '/knowledgebase')}  |&nbsp;
+                        {this.renderLinkItem(t('TERMS_AND_CONDITIONS'), 'tc')}
+                      </span>
+                    </Typography>
+                  </Hidden>
+                  <Hidden mdUp>
+                    <Grid container direction="row" justify="center" className={classes.linkContainerSmall}>
+                      <Grid container justify="center" item xs={12} sm={6} md={3}>
+                        <Typography variant="subtitle1">{this.renderLinkItem('CONTACT_US', '/contact')}</Typography>
+                      </Grid>
+                      <Grid container justify="center" item xs={12} sm={6} md={3}>
+                        <Typography variant="subtitle1">{this.renderLinkItem(('DASHBOARD'), '/dashboard')}</Typography>
+                      </Grid>
+                      <Grid container justify="center" item xs={12} sm={6} md={3}>
+                        <Typography variant="subtitle1">{this.renderLinkItem(t('KNOWLEDGE_BASE'), '/knowledgebase')}</Typography>
+                      </Grid>
+                      <Grid container justify="center" item xs={12} sm={6} md={3}>
+                        <Typography variant="subtitle1">{this.renderLinkItem(t('TERMS_AND_CONDITIONS'), 'tc')}</Typography>
+                      </Grid>
+                    </Grid>
+                  </Hidden>
+                </div>
               }
-            </Typography>
+            </Grid>
           </Grid>
-          {/* <span className="portal-flex" /> */}
-          <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            {/* <Typography
-              variant="h6"
-              color="inherit"
-            > */}
-            <Hidden smDown>
-              <Typography>{ready && t('CONTACT_US')} | {t('DASHBOARD')} | {t('KNOWLEDGE_BASE')} | {t('TERMS_AND_CONDITIONS')}</Typography>
-            </Hidden>
-            <Hidden mdUp>
-              <Grid container direction="row" justify="center" xs>
-                <Grid container justify="center" item xs={12} sm={6} md={3}>
-                  {ready && t('CONTACT_US')}
-                </Grid>
-                <Grid container justify="center" item xs={12} sm={6} md={3}>
-                  {ready && t('DASHBOARD')}
-                </Grid>
-                <Grid container justify="center" item xs={12} sm={6} md={3}>
-                  {ready && t('KNOWLEDGE_BASE')}
-                </Grid>
-                <Grid container justify="center" item xs={12} sm={6} md={3}>
-                  {ready && t('TERMS_AND_CONDITIONS')}
-                </Grid>
-              </Grid>
-            </Hidden>
-            {/* </Typography> */}
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
-  );
+        </Toolbar>
+      </AppBar>
+    );
+  }
+}
+
+ContentFooter.defaultProps = {
+  tReady: false
 };
 
 ContentFooter.propTypes = {
   classes: PropTypes.shape({
     coloredIcon: PropTypes.string,
-    ownerLink: PropTypes.string
-  }).isRequired
+    ownerLink: PropTypes.string,
+    rightsTextContainer: PropTypes.string,
+    linkItem: PropTypes.string,
+    linkContainerLarge: PropTypes.string,
+    linkContainerSmall: PropTypes.string
+  }).isRequired,
+  tReady: PropTypes.bool,
+  t: PropTypes.func.isRequired
 };
 
 
-export default withStyles(themeStyles)(ContentFooter);
+export default compose(withStyles(themeStyles), withTranslation())(ContentFooter);
